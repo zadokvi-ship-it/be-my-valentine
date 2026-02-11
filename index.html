@@ -2,27 +2,28 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For You ❤️</title>
+<title>Saffron Spice – San Antonio Menu</title>
 
 <style>
 body {
   margin: 0;
   overflow: hidden;
-  text-align: center;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(to right, #ff9a9e, #fecfef);
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  background: linear-gradient(135deg, #ffd6ec, #ffe8f7, #fff0fa);
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  text-align: center;
   position: relative;
 }
 
 h1 {
-  font-size: 2.3em;
-  color: white;
-  margin-bottom: 40px;
+  font-size: 2.5em;
+  color: #ff4da6;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px white;
 }
 
 button {
@@ -36,25 +37,27 @@ button {
 }
 
 #yes {
-  background-color: #ff4d6d;
+  background-color: #ff66b3;
   color: white;
   position: static;
+  box-shadow: 0 5px 15px rgba(255, 102, 179, 0.5);
 }
 
 #yes:hover {
-  transform: scale(1.1);
+  transform: scale(1.15);
 }
 
 #no {
   background-color: white;
-  color: #ff4d6d;
+  color: #ff66b3;
+  box-shadow: 0 5px 15px rgba(255, 102, 179, 0.3);
 }
 
-.heart {
+.floating {
   position: absolute;
-  font-size: 20px;
-  animation: floatUp 4s linear infinite;
-  color: white;
+  font-size: 24px;
+  animation: floatUp 6s linear infinite;
+  opacity: 0.8;
 }
 
 @keyframes floatUp {
@@ -66,10 +69,10 @@ button {
 
 <body>
 
-<h1>Will you be my Valentine? 💘</h1>
+<h1>Will you be my Valentine? 💖🌸</h1>
 
-<button id="yes" onclick="celebrate()">❤️ Yes</button>
-<button id="no">💔 No</button>
+<button id="yes" onclick="celebrate()">🌷 Yes 💕</button>
+<button id="no">🙅‍♀️ No</button>
 
 <script>
 const noButton = document.getElementById("no");
@@ -78,27 +81,29 @@ noButton.addEventListener("mouseover", moveButton);
 noButton.addEventListener("click", moveButton);
 
 function moveButton() {
-  const x = Math.random() * (window.innerWidth - 100);
-  const y = Math.random() * (window.innerHeight - 50);
+  const x = Math.random() * (window.innerWidth - 120);
+  const y = Math.random() * (window.innerHeight - 60);
   noButton.style.left = x + "px";
   noButton.style.top = y + "px";
 }
 
 function celebrate() {
-  alert("YAYYYY ❤️ I LOVE YOU!!!");
-  createHearts();
+  document.body.innerHTML = `
+    <h1 style="color:#ff4da6;">YAYYYY 💖</h1>
+    <h2 style="color:#ff66b3;">You just made me the happiest boyfriend ever 🥹🌸</h2>
+  `;
+  createCuteStuff();
 }
 
-function createHearts() {
-  for (let i = 0; i < 30; i++) {
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML = "💖";
-    heart.style.left = Math.random() * window.innerWidth + "px";
-    heart.style.animationDuration = (Math.random() * 2 + 2) + "s";
-    document.body.appendChild(heart);
-
-    setTimeout(() => heart.remove(), 4000);
+function createCuteStuff() {
+  const emojis = ["🌸","💖","✨","🌷","💕","🌺"];
+  for (let i = 0; i < 40; i++) {
+    const item = document.createElement("div");
+    item.classList.add("floating");
+    item.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+    item.style.left = Math.random() * window.innerWidth + "px";
+    item.style.animationDuration = (Math.random() * 3 + 3) + "s";
+    document.body.appendChild(item);
   }
 }
 </script>
